@@ -1,3 +1,5 @@
 
-export const PokeHeader = () => (<></>);
+const PokeHeader = () => (<></>);
+
+export default PokeHeader;
 

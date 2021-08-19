@@ -5,9 +5,10 @@ import PokeParty from "./PokeParty";
 import PokeResults from "./PokeResults";
 import PokeSearch from "./PokeSearch";
 
-const PokemonMain = () => {
+const PokemonMain = (): JSX.Element => {
   return (
     <>
+    
       <PokeHeader />
       <PokeSearch />
       <PokeResults />

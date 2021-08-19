@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {
   Box,
   createStyles,
@@ -83,4 +83,4 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
   );
 };
 
-export default PokeSearch;
+export default React.memo(PokeSearch);

@@ -1,0 +1,25 @@
+{
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+    ],
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
+    "editor.fontSize": 18,
+    "workbench.colorCustomizations": {
+        "editorError.foreground": "#ff000088",
+        "editorWarning.foreground": "#ffe60033",
+        "editorInfo.foreground": "#00ff0088",
+        "editorUnnecessaryCode.opacity": "#00000060",
+        "editorUnnecessaryCode.border": "#cf7c0eb4",
+        "emmet.showExpandedAbbreviation": "never",
+        "emmet.triggerExpansionOnTab": false,
+        "emmet.showSuggestionsAsSnippets": false,
+        "editor.snippetSuggestions": "bottom"
+    }
+}

@@ -1,5 +1,3 @@
-const PokeResults = () => (
-    <></>
-);
+const PokeResults = () => <></>;
 
 export default PokeResults;

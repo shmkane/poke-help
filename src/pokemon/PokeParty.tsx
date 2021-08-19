@@ -1,5 +1,3 @@
-const PokeParty = () => (
-    <></>
-);
+const PokeParty = () => <></>;
 
 export default PokeParty;

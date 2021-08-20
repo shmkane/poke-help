@@ -1,40 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Paper, Typography } from "@material-ui/core";
-import { pokedex, PokeTypes } from "./pokeHelper";
+import { pokedex } from "./pokeHelper";
+import { getPokemonTypeWeaknesses } from "./pokemonResultsHelper";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Pokedex = require("pokedex-promise-v2");
 
 interface PokeResults {
   userInput: string;
 }
-
-const getPokemonTypeWeaknesses = (
-  P: any,
-  pokemonStr: string,
-  setPokeResults: React.Dispatch<React.SetStateAction<string[]>>
-): string[] => {
-  const types = pokedex.find((p) => pokemonStr === p.name)?.types;
-
-  let results: string[] = [];
-
-  types?.forEach((type: PokeTypes) => {
-    if (type) {
-      P.getTypeByName(type.toLowerCase())
-        .then((response: any) => {
-          const { double_damage_from } = response.damage_relations;
-          results = results.concat(
-            double_damage_from.map((type: any) => type.name)
-          );
-          setPokeResults(results);
-        })
-        .catch((error: any) => {
-          console.log("There was an ERROR: ", error);
-        });
-    }
-  });
-
-  return results;
-};
 
 const PokeResults = ({ userInput }: PokeResults) => {
   const P = new Pokedex();

@@ -1,3 +1,3 @@
-const PokeParty = () => <></>;
+const PokeParty = (): JSX.Element => <></>;
 
 export default PokeParty;

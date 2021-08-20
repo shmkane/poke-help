@@ -10,12 +10,8 @@ import {
   Theme,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { E, pokedex, PokemonType, PokeTypes } from "./pokeHelper";
-import {
-  Autocomplete,
-  AutocompleteChangeDetails,
-  AutocompleteChangeReason,
-} from "@material-ui/lab";
+import { E, pokedex, PokemonType } from "./pokeHelper";
+import { Autocomplete } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -48,10 +44,13 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
   const [textInput, setTextInput] = useState<string>("");
 
   const handleChange = (
-    _event: ChangeEvent<any>,
+    _event: ChangeEvent<unknown>,
     value: PokemonType | null
   ) => {
-    setTextInput(value?.name ?? "");
+    const input = value?.name ?? "";
+    setTextInput(input);
+    setUserInput(input);
+    console.log("hi");
   };
 
   const submitData = () => {
@@ -74,15 +73,14 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
               options={pokedex}
               getOptionLabel={(option: PokemonType) => option.name}
               className={classes.input}
-              autoSelect
               onChange={handleChange}
+              autoSelect
               autoHighlight
               renderInput={(params) => {
-                const { InputLabelProps, InputProps, ...rest } = params;
                 return (
                   <InputBase
+                    {...params}
                     {...params.InputProps}
-                    {...rest}
                     placeholder={`Search Pok${E}mon`}
                   />
                 );

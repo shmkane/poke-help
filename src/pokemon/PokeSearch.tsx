@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { ChangeEvent, useState } from "react";
 import {
   Box,
   createStyles,
@@ -10,7 +10,12 @@ import {
   Theme,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { E } from "./pokeHelper";
+import { E, pokedex, PokemonType, PokeTypes } from "./pokeHelper";
+import {
+  Autocomplete,
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
+} from "@material-ui/lab";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,6 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     input: {
       marginLeft: theme.spacing(1),
+      marginTop: theme.spacing(0.9),
       flex: 1,
     },
     iconButton: {
@@ -41,8 +47,11 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
 
   const [textInput, setTextInput] = useState<string>("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTextInput(event.target.value);
+  const handleChange = (
+    _event: ChangeEvent<any>,
+    value: PokemonType | null
+  ) => {
+    setTextInput(value?.name ?? "");
   };
 
   const submitData = () => {
@@ -52,6 +61,7 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
   return (
     <>
       <Box m={3} />
+
       <Grid
         container
         direction="row"
@@ -60,13 +70,23 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
       >
         <Grid item xs={8}>
           <Paper className={classes.root}>
-            <InputBase
+            <Autocomplete
+              options={pokedex}
+              getOptionLabel={(option: PokemonType) => option.name}
               className={classes.input}
-              placeholder={`Search Pok${E}mon`}
-              value={textInput}
-              inputProps={{ "aria-label": "search pokemon" }}
+              autoSelect
               onChange={handleChange}
-
+              autoHighlight
+              renderInput={(params) => {
+                const { InputLabelProps, InputProps, ...rest } = params;
+                return (
+                  <InputBase
+                    {...params.InputProps}
+                    {...rest}
+                    placeholder={`Search Pok${E}mon`}
+                  />
+                );
+              }}
             />
             <IconButton
               type="submit"

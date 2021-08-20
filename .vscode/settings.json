@@ -5,9 +5,9 @@
         "typescript",
         "typescriptreact",
     ],
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+        "source.fixAll.eslint": false
     },
     "editor.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
     "editor.fontSize": 18,
@@ -21,5 +21,8 @@
         "emmet.triggerExpansionOnTab": false,
         "emmet.showSuggestionsAsSnippets": false,
         "editor.snippetSuggestions": "bottom"
-    }
+    },
+    "cSpell.words": [
+        "pokedex"
+    ]
 }

@@ -1,9 +1,5 @@
-import {
-  pokedex,
-  PokeTypes,
-  PokeResponse,
-  DefaultPokeResponse,
-} from "./pokeHelper";
+import { PokeTypes, PokeResponse, DefaultPokeResponse } from "./pokeHelper";
+import { pokedex } from "./database";
 
 export const getPokemonTypeWeaknesses = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -21,9 +17,22 @@ export const getPokemonTypeWeaknesses = (
         .then((response: PokeResponse) => {
           const { double_damage_from } = response.damage_relations;
           results = results.concat(
-            double_damage_from.map((type: DefaultPokeResponse) => type.name)
+            double_damage_from.map(
+              (type: DefaultPokeResponse) =>
+                type.name.charAt(0).toUpperCase() + type.name.slice(1)
+            )
           );
-          setPokeResults(results);
+          setPokeResults(
+            results.sort((a, b) => {
+              if (a < b) {
+                return -1;
+              }
+              if (a > b) {
+                return 1;
+              }
+              return 0;
+            })
+          );
         })
         .catch((error: never) => {
           console.log("There was an ERROR: ", error);

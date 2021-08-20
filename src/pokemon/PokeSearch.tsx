@@ -10,7 +10,8 @@ import {
   Theme,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { E, pokedex, PokemonType } from "./pokeHelper";
+import { E, PokemonType } from "./pokeHelper";
+import { pokedex } from "./database";
 import { Autocomplete } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme: Theme) =>

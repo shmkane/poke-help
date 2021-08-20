@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Paper, Typography } from "@material-ui/core";
-import { pokedex } from "./pokeHelper";
 import { getPokemonTypeWeaknesses } from "./pokemonResultsHelper";
+import { pokedex } from "./database";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Pokedex = require("pokedex-promise-v2");
 

@@ -28,7 +28,7 @@ const PokeResults = ({ userInput }: PokeResults) => {
         justifyContent="space-around"
         alignItems="center"
       >
-        <Grid item sm={6} xs={12}>
+        <Grid item md={6} xs={12}>
           <Grid container justify="space-around" alignItems="center">
             {userInput && (
               <Grid item xs={12} style={{ textAlign: "center", maxWidth: 500 }}>
@@ -53,19 +53,19 @@ const PokeResults = ({ userInput }: PokeResults) => {
             )}
           </Grid>
         </Grid>
-        <Grid item sm={6} xs={12}>
+        <Grid item md={6} xs={12}>
           <Grid
             container
             direction="row"
             justifyContent="center"
             alignItems="center"
           >
-            <Grid item sm={12} xs={12} style={{ textAlign: "center" }}>
+            <Grid item md={12} xs={12} style={{ textAlign: "center" }}>
               <Typography variant="h5">
                 {userInput ? "Weak Against" : ""}
               </Typography>
             </Grid>
-            <Grid item sm={6} xs={12} style={{ textAlign: "center" }}>
+            <Grid item md={6} xs={12} style={{ textAlign: "center" }}>
               {pokeResults.map((t) => (
                 <Paper key={t} elevation={3} style={{ margin: 10 }}>
                   <Box key={t} color="primary">

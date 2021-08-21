@@ -1,4 +1,4 @@
-import { PokeTypes, PokeResponse, DAMAGE, MatchupResult } from "./pokeHelper";
+import { PokeTypes, DAMAGE, PokeResponse, MatchupResult } from "./pokeHelper";
 import { pokedex } from "./database";
 
 export const fetchPokemonMatchups = (

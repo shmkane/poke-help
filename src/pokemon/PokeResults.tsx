@@ -11,6 +11,7 @@ import {
   MatchupResult,
   PokeResponse,
   PokeTypes,
+  useTypeStyles,
 } from "./pokeHelper";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Pokedex = require("pokedex-promise-v2");
@@ -49,24 +50,53 @@ const PokeResults = ({ userInput }: PokeResults) => {
         <Grid item md={6} xs={12}>
           <Grid container justify="space-around" alignItems="center">
             {userInput && (
-              <Grid item xs={12} style={{ textAlign: "center", maxWidth: 500 }}>
-                <Paper variant="outlined" square>
+              <Grid
+                item
+                xs={12}
+                style={{ textAlign: "center", marginRight: 20, marginLeft: 20 }}
+              >
+                <Paper elevation={12}>
+                  <Typography variant="h4">Enemy</Typography>
                   <img
                     src={pokedex?.find((a) => a.name === userInput)?.src ?? ""}
                     alt={userInput}
                     height={150}
                     width={150}
                   ></img>
-                  <Typography variant="h5" style={{ textAlign: "center" }}>
+
+                  <Typography
+                    variant="h4"
+                    style={{ textAlign: "center", fontWeight: "bold" }}
+                  >
                     {userInput}
                   </Typography>
-                  <small>
-                    {pokedex
-                      ?.find((a) => a.name === userInput)
-                      ?.types.join(" ") ?? ""}
-                  </small>
+
+                  {pokedex
+                    ?.find((a) => a.name === userInput)
+                    ?.types.map((type) => {
+                      const toLower: string = type?.toLowerCase() ?? "default";
+                      return (
+                        <Typography
+                          key={type}
+                          variant="h6"
+                          display="inline"
+                          style={{
+                            ...useTypeStyles[toLower],
+                            fontWeight: "bold",
+                            paddingLeft: 5,
+                            paddingRight: 5,
+                          }}
+                        >
+                          {type}
+                        </Typography>
+                      );
+                    })}
                 </Paper>
                 <Box m={3} />
+                <Typography variant="h4" style={{ textAlign: "center" }}>
+                  Effective against{" "}
+                  <span style={{ fontWeight: "bold" }}>{userInput}</span>:
+                </Typography>
               </Grid>
             )}
           </Grid>
@@ -81,23 +111,44 @@ const PokeResults = ({ userInput }: PokeResults) => {
             <Grid item md={6} xs={12} style={{ textAlign: "center" }}>
               {userInput?.length &&
                 pokeResults.map((t: MatchupResult) => {
+                  const toLower: string = t?.type?.toLowerCase() ?? "default";
+
                   return (
-                    <Paper key={t.type} elevation={3} style={{ margin: 10 }}>
-                      <Box color="primary">
-                        <Typography variant="h6" display="inline">
-                          {capitalizeFirstLetter(t?.type ?? "")}
-                          {": "}
-                          {damageToString(t.multiplier)}
-                        </Typography>
+                    <Paper
+                      key={t.type}
+                      elevation={3}
+                      style={{ margin: 10, marginRight: 20, marginLeft: 20 }}
+                    >
+                      <Typography
+                        variant="h5"
+                        display="inline"
+                        style={{
+                          flex: 1,
+                          ...useTypeStyles[toLower],
+                          fontWeight: "bold",
+                          paddingLeft: 5,
+                          paddingRight: 5,
+                        }}
+                      >
+                        {capitalizeFirstLetter(t?.type ?? "")}
+                      </Typography>
 
-                        <Typography variant="h6" display="inline">
-                          {" "}
-                        </Typography>
+                      <Typography
+                        variant="h5"
+                        display="inline"
+                        style={{
+                          ...useTypeStyles[toLower],
+                          fontWeight: "bold",
+                          paddingLeft: 5,
+                          paddingRight: 5,
+                        }}
+                      >
+                        {damageToString(t.multiplier)}
+                      </Typography>
 
-                        <Typography variant="body1" display="inline">
-                          <small>({t.multiplier.toFixed(1)}x)</small>
-                        </Typography>
-                      </Box>
+                      <Typography variant="h6" display="inline">
+                        <small>({t.multiplier.toFixed(1)}x)</small>
+                      </Typography>
                     </Paper>
                   );
                 })}

@@ -79,7 +79,7 @@ const PokeResults = ({ userInput }: PokeResults) => {
                       return (
                         <Typography
                           key={type}
-                          variant="h6"
+                          variant="h5"
                           display="inline"
                           style={{
                             ...useTypeStyles[toLower],
@@ -96,7 +96,7 @@ const PokeResults = ({ userInput }: PokeResults) => {
                 <Box m={3} />
                 <Typography variant="h4" style={{ textAlign: "center" }}>
                   Effective against{" "}
-                  <span style={{ fontWeight: "bold" }}>{userInput}</span>:
+                  <span style={{ fontWeight: "bolder" }}>{userInput}</span>:
                 </Typography>
               </Grid>
             )}
@@ -118,12 +118,16 @@ const PokeResults = ({ userInput }: PokeResults) => {
                     <Paper
                       key={t.type}
                       elevation={3}
-                      style={{ margin: 10, marginRight: 20, marginLeft: 20 }}
+                      style={{ margin: 20, marginRight: 20, marginLeft: 20 }}
                     >
-                      <Grid container justifyContent="space-between">
-                        <Grid item xs={6}>
+                      <Grid
+                        container
+                        justifyContent="center"
+                        alignItems="center"
+                      >
+                        <Grid item xs={12}>
                           <Typography
-                            variant="h5"
+                            variant="h4"
                             display="inline"
                             style={{
                               ...useTypeStyles[toLower],
@@ -135,21 +139,31 @@ const PokeResults = ({ userInput }: PokeResults) => {
                           </Typography>
                         </Grid>
 
-                        <Grid item xs={6}>
+                        <Grid item xs={12}>
                           <Typography
                             variant="h5"
                             display="inline"
                             style={{
                               ...useEffectStyle[damageToString(t.multiplier)],
                               paddingRight: 2,
-                              fontWeight: "bolder",
+                              fontWeight: "bold",
                             }}
                           >
                             {damageToString(t.multiplier)}
                           </Typography>
 
-                          <Typography variant="h6" display="inline">
-                            <small>({t.multiplier.toFixed(1)}x)</small>
+                          <Typography
+                            variant="h6"
+                            display="inline"
+                            style={{
+                              color:
+                                useEffectStyle[damageToString(t.multiplier)]
+                                  .accentColor,
+                              paddingRight: 2,
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            ( {t.multiplier.toFixed(1)}x )
                           </Typography>
                         </Grid>
                       </Grid>

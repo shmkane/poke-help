@@ -41,22 +41,28 @@ export const IMMUNE_STR = "No Effect";
 
 export const useEffectStyle: { [id: string]: any } = {
   default: {
-    color: "#fff",
+    color: "#ddd",
+    accentColor: "#fff",
   },
   [IDEAL_STR]: {
-    color: "gold",
+    color: "DodgerBlue",
+    accentColor: "LightBlue",
   },
   [SUPER_EFFECTIVE_STR]: {
-    color: "green",
+    color: "LawnGreen",
+    accentColor: "LightGreen",
   },
   [EFFECTIVE_STR]: {
-    color: "white",
+    color: "AliceBlue",
+    accentColor: "LightYellow",
   },
   [NOT_EFFECTIVE_STR]: {
-    color: "red",
+    color: "DarkSalmon",
+    accentColor: "Red",
   },
   [IMMUNE_STR]: {
     color: "black",
+    accentColor: "darkgray",
   },
 };
 

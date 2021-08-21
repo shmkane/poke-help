@@ -11,6 +11,7 @@ import {
   MatchupResult,
   PokeResponse,
   PokeTypes,
+  useEffectStyle,
   useTypeStyles,
 } from "./pokeHelper";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -119,36 +120,39 @@ const PokeResults = ({ userInput }: PokeResults) => {
                       elevation={3}
                       style={{ margin: 10, marginRight: 20, marginLeft: 20 }}
                     >
-                      <Typography
-                        variant="h5"
-                        display="inline"
-                        style={{
-                          flex: 1,
-                          ...useTypeStyles[toLower],
-                          fontWeight: "bold",
-                          paddingLeft: 5,
-                          paddingRight: 5,
-                        }}
-                      >
-                        {capitalizeFirstLetter(t?.type ?? "")}
-                      </Typography>
+                      <Grid container justifyContent="space-between">
+                        <Grid item xs={6}>
+                          <Typography
+                            variant="h5"
+                            display="inline"
+                            style={{
+                              ...useTypeStyles[toLower],
+                              fontWeight: "bolder",
+                              paddingRight: 5,
+                            }}
+                          >
+                            {capitalizeFirstLetter(t?.type ?? "")}
+                          </Typography>
+                        </Grid>
 
-                      <Typography
-                        variant="h5"
-                        display="inline"
-                        style={{
-                          ...useTypeStyles[toLower],
-                          fontWeight: "bold",
-                          paddingLeft: 5,
-                          paddingRight: 5,
-                        }}
-                      >
-                        {damageToString(t.multiplier)}
-                      </Typography>
+                        <Grid item xs={6}>
+                          <Typography
+                            variant="h5"
+                            display="inline"
+                            style={{
+                              ...useEffectStyle[damageToString(t.multiplier)],
+                              paddingRight: 2,
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            {damageToString(t.multiplier)}
+                          </Typography>
 
-                      <Typography variant="h6" display="inline">
-                        <small>({t.multiplier.toFixed(1)}x)</small>
-                      </Typography>
+                          <Typography variant="h6" display="inline">
+                            <small>({t.multiplier.toFixed(1)}x)</small>
+                          </Typography>
+                        </Grid>
+                      </Grid>
                     </Paper>
                   );
                 })}

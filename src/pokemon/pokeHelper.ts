@@ -33,17 +33,44 @@ export enum DAMAGE {
   NO_EFFECT = 0.0,
 }
 
+export const IDEAL_STR = "Ideal";
+export const SUPER_EFFECTIVE_STR = "Super Effective";
+export const EFFECTIVE_STR = "Effective";
+export const NOT_EFFECTIVE_STR = "Not Effective";
+export const IMMUNE_STR = "No Effect";
+
+export const useEffectStyle: { [id: string]: any } = {
+  default: {
+    color: "#fff",
+  },
+  [IDEAL_STR]: {
+    color: "gold",
+  },
+  [SUPER_EFFECTIVE_STR]: {
+    color: "green",
+  },
+  [EFFECTIVE_STR]: {
+    color: "white",
+  },
+  [NOT_EFFECTIVE_STR]: {
+    color: "red",
+  },
+  [IMMUNE_STR]: {
+    color: "black",
+  },
+};
+
 export const damageToString = (multiplier: number): string => {
   if (multiplier > 2) {
-    return "SUPER EFFECTIVE";
+    return IDEAL_STR;
   } else if (multiplier > 1) {
-    return "Super Effective";
+    return SUPER_EFFECTIVE_STR;
   } else if (multiplier > 0.5) {
-    return "Effective";
+    return EFFECTIVE_STR;
   } else if (multiplier > 0.0) {
-    return "Not Very Effective";
+    return NOT_EFFECTIVE_STR;
   } else {
-    return "Immune";
+    return IMMUNE_STR;
   }
 };
 
@@ -66,7 +93,7 @@ export type PokeResponse = {
   id: 4;
   move_damage_class: DefaultPokeResponse;
   moves: DefaultPokeResponse[];
-  name: "poison";
+  name: string;
   names: never[];
   pokemon: never[];
 };
@@ -91,7 +118,7 @@ export const useTypeStyles: { [id: string]: any } = {
     color: "#87cf63",
   },
   ground: {
-    color: "##e6c97a",
+    color: "#e6c97a",
   },
   fighting: {
     color: "#cd4534",
@@ -121,31 +148,7 @@ export const useTypeStyles: { [id: string]: any } = {
     color: "#8557f8",
   },
   water: {
-    color: "#866b58",
-  },
-  ice: {
-    color: "#a6ddde",
-  },
-  poison: {
-    color: "#b258a9",
-  },
-  dark: {
-    color: "#866b58",
-  },
-  ghost: {
-    color: "#816ea6",
-  },
-  fairy: {
-    color: "#ffbed3",
-  },
-};
-
-export const useEffectStyle: { [id: string]: any } = {
-  default: {
-    color: "#fff",
-  },
-  super_effective: {
-    color: "#866b58",
+    color: "#78a2f2",
   },
   ice: {
     color: "#a6ddde",

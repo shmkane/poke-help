@@ -67,7 +67,7 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
         justifyContent="center"
         alignItems="center"
       >
-        <Grid item xs={8}>
+        <Grid item xs={12}>
           <Paper className={classes.root}>
             <Autocomplete
               options={pokedex}

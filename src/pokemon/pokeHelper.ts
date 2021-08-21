@@ -26,6 +26,27 @@ export type DefaultPokeResponse = {
   url: string;
 };
 
+export enum DAMAGE {
+  SUPER_EFFECTIVE = 2.0,
+  REGULAR = 1.0,
+  NOT_EFFECTIVE = 0.5,
+  NO_EFFECT = 0.0,
+}
+
+export const damageToString = (multiplier: number): string => {
+  if (multiplier > 2) {
+    return "SUPER EFFECTIVE";
+  } else if (multiplier > 1) {
+    return "Super Effective";
+  } else if (multiplier > 0.5) {
+    return "Effective";
+  } else if (multiplier > 0.0) {
+    return "Not Very Effective";
+  } else {
+    return "Immune";
+  }
+};
+
 export type PokeResponse = {
   damage_relations: {
     double_damage_from: DefaultPokeResponse[];
@@ -56,3 +77,5 @@ export type PokemonType = {
   types: Array<PokeTypes>;
   src: string;
 };
+
+export type MatchupResult = { type: PokeTypes; multiplier: number };

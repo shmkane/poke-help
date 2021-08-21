@@ -1,23 +1,41 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Grid, Paper, Typography } from "@material-ui/core";
-import { getPokemonTypeWeaknesses } from "./pokemonResultsHelper";
+import {
+  getPokemonTypeWeaknesses,
+  fetchPokemonMatchups,
+  capitalizeFirstLetter,
+} from "./pokemonResultsHelper";
 import { pokedex } from "./database";
+import {
+  damageToString,
+  MatchupResult,
+  PokeResponse,
+  PokeTypes,
+} from "./pokeHelper";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Pokedex = require("pokedex-promise-v2");
 
 interface PokeResults {
-  userInput: string;
+  userInput: PokeTypes;
 }
 
 const PokeResults = ({ userInput }: PokeResults) => {
   const P = new Pokedex();
-  const [pokeResults, setPokeResults] = useState<string[]>([]);
+  const [fetchedResults, setFetchedResults] = useState<PokeResponse[]>();
+  const [pokeResults, setPokeResults] = useState<MatchupResult[]>([]);
 
   useEffect(() => {
     if (userInput?.length) {
-      getPokemonTypeWeaknesses(P, userInput as string, setPokeResults);
+      fetchPokemonMatchups(P, userInput as string, setFetchedResults);
+      setPokeResults([]);
     }
   }, [userInput]);
+
+  useEffect(() => {
+    if (fetchedResults) {
+      getPokemonTypeWeaknesses(fetchedResults, setPokeResults);
+    }
+  }, [fetchedResults]);
 
   return (
     <>
@@ -60,19 +78,29 @@ const PokeResults = ({ userInput }: PokeResults) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Grid item md={12} xs={12} style={{ textAlign: "center" }}>
-              <Typography variant="h5">
-                {userInput ? "Weak Against" : ""}
-              </Typography>
-            </Grid>
             <Grid item md={6} xs={12} style={{ textAlign: "center" }}>
-              {pokeResults.map((t) => (
-                <Paper key={t} elevation={3} style={{ margin: 10 }}>
-                  <Box key={t} color="primary">
-                    <Typography variant="h6">{t}</Typography>
-                  </Box>
-                </Paper>
-              ))}
+              {userInput?.length &&
+                pokeResults.map((t: MatchupResult) => {
+                  return (
+                    <Paper key={t.type} elevation={3} style={{ margin: 10 }}>
+                      <Box color="primary">
+                        <Typography variant="h6" display="inline">
+                          {capitalizeFirstLetter(t?.type ?? "")}
+                          {": "}
+                          {damageToString(t.multiplier)}
+                        </Typography>
+
+                        <Typography variant="h6" display="inline">
+                          {" "}
+                        </Typography>
+
+                        <Typography variant="body1" display="inline">
+                          <small>({t.multiplier.toFixed(1)}x)</small>
+                        </Typography>
+                      </Box>
+                    </Paper>
+                  );
+                })}
             </Grid>
           </Grid>
         </Grid>
@@ -81,4 +109,4 @@ const PokeResults = ({ userInput }: PokeResults) => {
   );
 };
 
-export default React.memo(PokeResults);
+export default PokeResults;

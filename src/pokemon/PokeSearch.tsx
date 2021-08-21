@@ -10,7 +10,7 @@ import {
   Theme,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { E, PokemonType } from "./pokeHelper";
+import { E, PokemonType, PokeTypes } from "./pokeHelper";
 import { pokedex } from "./database";
 import { Autocomplete } from "@material-ui/lab";
 
@@ -36,22 +36,21 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface PokeSearchInterface {
-  setUserInput: React.Dispatch<React.SetStateAction<string>>;
+  setUserInput: React.Dispatch<React.SetStateAction<PokeTypes>>;
 }
 
 const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
   const classes = useStyles();
 
-  const [textInput, setTextInput] = useState<string>("");
+  const [textInput, setTextInput] = useState<PokeTypes>(undefined);
 
   const handleChange = (
     _event: ChangeEvent<unknown>,
     value: PokemonType | null
   ) => {
-    const input = value?.name ?? "";
+    const input = value?.name as PokeTypes;
     setTextInput(input);
     setUserInput(input);
-    console.log("hi");
   };
 
   const submitData = () => {

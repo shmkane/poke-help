@@ -123,7 +123,7 @@ const PokeResults = ({ userInput }: PokeResults) => {
                       style={{ margin: 20, marginRight: 20, marginLeft: 20 }}
                     >
                       <Grid container alignItems="center">
-                        <Grid item xs={12}>
+                        <Grid item lg={4} xs={12}>
                           <Typography
                             variant="h4"
                             display="inline"
@@ -137,7 +137,7 @@ const PokeResults = ({ userInput }: PokeResults) => {
                           </Typography>
                         </Grid>
 
-                        <Grid item xs={12}>
+                        <Grid item lg={8} xs={12}>
                           <Typography
                             variant="h5"
                             display="inline"

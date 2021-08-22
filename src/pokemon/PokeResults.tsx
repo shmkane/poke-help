@@ -57,7 +57,9 @@ const PokeResults = ({ userInput }: PokeResults) => {
                 style={{ textAlign: "center", marginRight: 20, marginLeft: 20 }}
               >
                 <Paper elevation={12}>
-                  <Typography variant="h4">Enemy</Typography>
+                  <Typography variant="h4" style={{ fontWeight: "bold" }}>
+                    Enemy
+                  </Typography>
                   <img
                     src={pokedex?.find((a) => a.name === userInput)?.src ?? ""}
                     alt={userInput}
@@ -67,7 +69,7 @@ const PokeResults = ({ userInput }: PokeResults) => {
 
                   <Typography
                     variant="h4"
-                    style={{ textAlign: "center", fontWeight: "bold" }}
+                    style={{ textAlign: "center", fontWeight: "bolder" }}
                   >
                     {userInput}
                   </Typography>
@@ -95,7 +97,7 @@ const PokeResults = ({ userInput }: PokeResults) => {
                 </Paper>
                 <Box m={3} />
                 <Typography variant="h4" style={{ textAlign: "center" }}>
-                  Effective against{" "}
+                  Types effective vs{" "}
                   <span style={{ fontWeight: "bolder" }}>{userInput}</span>:
                 </Typography>
               </Grid>
@@ -120,11 +122,7 @@ const PokeResults = ({ userInput }: PokeResults) => {
                       elevation={3}
                       style={{ margin: 20, marginRight: 20, marginLeft: 20 }}
                     >
-                      <Grid
-                        container
-                        justifyContent="center"
-                        alignItems="center"
-                      >
+                      <Grid container alignItems="center">
                         <Grid item xs={12}>
                           <Typography
                             variant="h4"

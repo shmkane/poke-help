@@ -67,8 +67,8 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
         justifyContent="center"
         alignItems="center"
       >
-        <Grid item xs={12}>
-          <Paper className={classes.root}>
+        <Grid item xs={12} md={10}>
+          <Paper className={classes.root} elevation={5}>
             <Autocomplete
               options={pokedex}
               getOptionLabel={(option: PokemonType) => option.name}
@@ -76,24 +76,24 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
               onChange={handleChange}
               autoSelect
               autoHighlight
+              PaperComponent={({ children }) => (
+                <Paper style={{ fontSize: 20 }}>{children}</Paper>
+              )}
               renderInput={(params) => {
                 return (
                   <InputBase
                     {...params}
                     {...params.InputProps}
                     placeholder={`Search Pok${E}mon`}
+                    style={{
+                      fontWeight: "bolder",
+                      fontSize: 25,
+                      margin: 5,
+                    }}
                   />
                 );
               }}
             />
-            <IconButton
-              type="submit"
-              className={classes.iconButton}
-              aria-label="search"
-              onClick={() => submitData()}
-            >
-              <SearchIcon />
-            </IconButton>
           </Paper>
         </Grid>
       </Grid>

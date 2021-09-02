@@ -39,7 +39,7 @@ export const EFFECTIVE_STR = "Effective";
 export const NOT_EFFECTIVE_STR = "Not Effective";
 export const IMMUNE_STR = "No Effect";
 
-export const useEffectStyle: { [id: string]: any } = {
+export const useEffectStyle: { [id: string]: Record<string, string> } = {
   default: {
     color: "#ddd",
     accentColor: "#fff",
@@ -113,7 +113,7 @@ export type PokemonType = {
 
 export type MatchupResult = { type: PokeTypes; multiplier: number };
 
-export const useTypeStyles: { [id: string]: any } = {
+export const useTypeStyles: { [id: string]: Record<string, string> } = {
   default: {
     color: "#000",
   },

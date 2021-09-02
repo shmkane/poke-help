@@ -21,7 +21,7 @@ interface PokeResults {
   userInput: PokeTypes;
 }
 
-const PokeResults = ({ userInput }: PokeResults) => {
+const PokeResults = ({ userInput }: PokeResults): JSX.Element => {
   const P = new Pokedex();
   const [fetchedResults, setFetchedResults] = useState<PokeResponse[]>();
   const [pokeResults, setPokeResults] = useState<MatchupResult[]>([]);

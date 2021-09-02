@@ -2,16 +2,16 @@ import { PokeTypes, DAMAGE, PokeResponse, MatchupResult } from "./pokeHelper";
 import { pokedex } from "./database";
 
 export const fetchPokemonMatchups = (
-  P: { getTypeByName: any },
+  P: { getTypeByName: (input: string | undefined) => Promise<never> },
   pokemonStr: string,
   setFetchedResults: React.Dispatch<
     React.SetStateAction<PokeResponse[] | undefined>
   >
-) => {
+): void => {
   // Get the types from local db
   const types = pokedex.find((p) => pokemonStr === p.name)?.types;
 
-  const typePromises: Promise<any>[] =
+  const typePromises: Promise<never>[] =
     types?.map((type: PokeTypes) => {
       return P.getTypeByName(type?.toLowerCase());
     }) ?? [];
@@ -57,6 +57,6 @@ export const getPokemonTypeWeaknesses = (
   });
 };
 
-export const capitalizeFirstLetter = (string: string) => {
+export const capitalizeFirstLetter = (string: string): string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };

@@ -1,15 +1,13 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent } from "react";
 import {
   Box,
   createStyles,
   Grid,
-  IconButton,
   InputBase,
   makeStyles,
   Paper,
   Theme,
 } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
 import { E, PokemonType, PokeTypes } from "./pokeHelper";
 import { pokedex } from "./database";
 import { Autocomplete } from "@material-ui/lab";
@@ -42,19 +40,12 @@ interface PokeSearchInterface {
 const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
   const classes = useStyles();
 
-  const [textInput, setTextInput] = useState<PokeTypes>(undefined);
-
   const handleChange = (
     _event: ChangeEvent<unknown>,
     value: PokemonType | null
   ) => {
     const input = value?.name as PokeTypes;
-    setTextInput(input);
     setUserInput(input);
-  };
-
-  const submitData = () => {
-    setUserInput(textInput);
   };
 
   return (
@@ -77,7 +68,7 @@ const PokeSearch = ({ setUserInput }: PokeSearchInterface): JSX.Element => {
               autoSelect
               autoHighlight
               PaperComponent={({ children }) => (
-                <Paper style={{ fontSize: 20 }}>{children}</Paper>
+                <Paper style={{ fontSize: 25 }}>{children}</Paper>
               )}
               renderInput={(params) => {
                 return (

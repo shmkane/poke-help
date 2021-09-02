@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/poke-help/static/css/main.1ab4f045.chunk.css",
+    "main.js": "/poke-help/static/js/main.3b7c915b.chunk.js",
+    "main.js.map": "/poke-help/static/js/main.3b7c915b.chunk.js.map",
+    "runtime-main.js": "/poke-help/static/js/runtime-main.0c96841b.js",
+    "runtime-main.js.map": "/poke-help/static/js/runtime-main.0c96841b.js.map",
+    "static/js/2.c258285e.chunk.js": "/poke-help/static/js/2.c258285e.chunk.js",
+    "static/js/2.c258285e.chunk.js.map": "/poke-help/static/js/2.c258285e.chunk.js.map",
+    "static/js/3.c16cb39f.chunk.js": "/poke-help/static/js/3.c16cb39f.chunk.js",
+    "static/js/3.c16cb39f.chunk.js.map": "/poke-help/static/js/3.c16cb39f.chunk.js.map",
+    "index.html": "/poke-help/index.html",
+    "static/css/main.1ab4f045.chunk.css.map": "/poke-help/static/css/main.1ab4f045.chunk.css.map",
+    "static/js/2.c258285e.chunk.js.LICENSE.txt": "/poke-help/static/js/2.c258285e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0c96841b.js",
+    "static/js/2.c258285e.chunk.js",
+    "static/css/main.1ab4f045.chunk.css",
+    "static/js/main.3b7c915b.chunk.js"
+  ]
+}

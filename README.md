@@ -1,10 +1,11 @@
-# Poke-Help
+## Background:
+My partner was learning Pokemon and couldn't keep track of all the different types and their strengths / weaknesses. For example, is Ice strong against Grass (yes)?
+This web app allows her to type in the Pokemon she's currently against, and it will list out all the attack types that Pokemon is weak to.
 
+## Details
 SWP React website using open source pokemon API to fetch assets & data of various pokemon. 
 Basic find/search/filtering of pokemons based on name, or properties. 
 Responsive across web/mobile/tablets
-
-This was a learning exercise
 
 Demo Site [here](https://shmkane.github.io/poke-help/)
 

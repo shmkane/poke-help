@@ -1,5 +1,11 @@
 # Poke-Help
 
+SWP React website using open source pokemon API to fetch assets & data of various pokemon. 
+Basic find/search/filtering of pokemons based on name, or properties. 
+Responsive across web/mobile/tablets
+
+This was a learning exercise
+
 Demo Site [here](https://shmkane.github.io/poke-help/)
 
 Incase the site ever goes down, here's screenshots of:
